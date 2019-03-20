@@ -1,0 +1,42 @@
+cdm->node app.js경로 찾기->npm install express--입력
+
+npm install --global --production windows-build-tools--입력
+
+npm install --global node-gyp--입력
+
+npm install mysql
+
+아톰 접속->
+var express = require('express');
+var http = require('http');
+var server = http.createServer(app).listen(80):
+
+app.get('/test', function (req, res){
+  res.send("hello world");
+});
+------입력
+
+크롬-> http://localhost/ 주소입력
+
+npm install --g supervisor
+
+supervisor app.js
+
+노드0312파일-> hello.html만들기
+
+
+app.get('/file', function (req, res) {
+  res.sendfile("hello.html");
+});
+
+hello.html에 이름쓰기
+
+http://localhost:81
+
+
+패키지:atom-beautify 도움,emmet,highlight-selected
+
+
+
+
+

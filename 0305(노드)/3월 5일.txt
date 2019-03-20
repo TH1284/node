@@ -1,0 +1,26 @@
+\\192.168.110.128
+
+cmd-> ipconfig-> Ip주소-> 
+
+
+
+
+
+
+https://nodejs.org/ko/  다운로드
+
+node -v -> 버전확인
+
+
+
+제어판-> 폴더옵션-> 보기-> 확장자 보기
+
+
+cd C:\Users\SMART-21\Desktop\TH\0305
+-> node app.js
+
+
+
+
+
+https://atom.io/ 다운로드
