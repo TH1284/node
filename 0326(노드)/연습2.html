@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id="aa">
+  <input type="text" id="bb">
+  <input type="button" value="버튼" id="cc">
+
+  <script>
+    document.getElementById('cc').addEventListener('click', function(){
+      var aa1 = document.getElementById('aa').value
+      var bb1 = document.getElementById('bb').value
+      var i = Number(aa1) + Number(bb1)
+
+      if(i<10){
+        alert("10미만 입니다.")
+      }else if(i>=10){
+        alert("10이상 입니다.")
+      }else {
+        alert("숫자만 입력해주세요.")
+      }
+  });
+
+
+
+for(i=1; i<101; i++){
+if(i%2 == 1){
+  console.log(i);
+}
+}
+
+for(i = 1; i<101; i+=2) {
+  console.log(i);
+}
+
+
+  </script>
+</body>
+
+</html>

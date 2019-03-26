@@ -1,0 +1,2 @@
+document.getElementById('helloArea').innerHTML = "abcd"
+helloArea을 abcd로 바꾼다

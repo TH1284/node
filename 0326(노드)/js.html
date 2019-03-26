@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id="inputText1">
+  <!-- <input type="text"id="inputText1"value="abd"> -->
+  <input type="text" id="inputText2">
+  <input type="button" value="버튼1" id="button1">
+  <!-- <input type="button" value="버튼2"id="button2"> -->
+
+  <span id="helloArea">hello javascript</span>
+  <script>
+    console.log("hello javascript2");
+    document.getElementById('helloArea').innerHTML = "abcd"
+    var a = 10;
+    console.log("1+1=", 1 + 1);
+    console.log("10+10=", 10 + 10)
+    console.log("100-60=", 100 - 60)
+    console.log("7*7=", 7 * 7)
+    console.log("20/3=", 20 / 3)
+
+    var a = 10;
+    if (a > 5) {
+      console.log(true);
+    } else {
+      console.log(false)
+    }
+    // var b = "aaaaa";
+    // document.getElementById('inputText1').value = b;
+    document.getElementById('inputText1')
+
+    // document.getElementById('button1').addEventListener('click', function(){
+    //   var wwww = document.getElementById('inputText1')
+    //   alert(wwww);
+
+    document.getElementById('button1').addEventListener('click', function() {
+      var wwww = document.getElementById('inputText1').value
+      var aaaa = document.getElementById('inputText2').value
+      var i = Number(wwww) + Number(aaaa)
+      if (i < 10) {
+        alert("10미만");
+      } else if (i >= 10) {
+        alert("10이상");
+      } else {
+        alert("숫자만 입력해주세요.");
+      }
+
+
+
+
+    });
+    for (var i = 1; i < 101; i++) {
+      if (i % 2 == 1) {
+        console.log(i);
+      }
+    }
+
+    for (var i=1; i<101; i+=2 ){
+      console.log(i);
+    }
+  </script>
+
+</body>
+
+</html>
