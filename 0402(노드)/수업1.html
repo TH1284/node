@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  id : <input type="text" id="a">
+  <br>
+  password : <input type="text" id="b">
+  <br>
+  <input type="button" value="로그인" id="c">
+  <script>
+    document.getElementById('c').addEventListener('click',function() {
+
+
+      var aa = document.getElementById('a').value
+      var bb = document.getElementById('b').value
+
+      if(aa == "polytech" && bb == "12345678"){
+        alert("로그인 성공")
+      }else {
+        alert("로그인 실패")
+      }
+
+    })
+  </script>
+
+
+
+</body>
+
+</html>

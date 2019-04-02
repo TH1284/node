@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <script>
+    var numberText = "";
+
+    for (var i = 1; i < 11; i++) {
+      numberText += i + " ";
+      console.log(i);
+    }
+      document.getElementById('numberArea').innerHTML = numberText;
+
+    var numberT = "";
+
+    for (var i = 1; i < 101; i++) {
+      numberT += i + " ";
+
+    if(i % 10 == 0){
+      numberT += "<br>"
+      numberT = numberT + "<br>"
+    }
+
+
+
+      console.log(i);
+    }
+      document.getElementById('numberArea').innerHTML = numberT;
+
+
+    var numberT2 = "";
+    for(var i=0; i<10; i++){
+      for(var j=1;j<11;j++){
+        numberT2 += i*10 + j +  " ";
+      }
+      numberT2 += '<br>';
+    }
+      document.getElementById('numberArea2').innerHTML = numberT2;
+
+
+    for (var i = 1; i <= 10; i++) {
+      console.log(i);
+    }
+
+
+
+    for (var i = 0; i < 10; i++) {
+      console.log(i + 1);
+    }
+
+    for (var i = 10; i < 101; i = i + 10) {
+      console.log(i / 10)
+    }
+
+    for (var i =10 ; i <20 ; i++) {
+      console.log(i % 10 + 1);
+    }
+
+    for (var i=1;1;0){
+      console.log(i);
+      i++;
+      if(i>10) {
+        break;
+      }
+    }
+  </script>
+
+
+
+
+</body>
+
+</html>
