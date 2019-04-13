@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <script>
+    // var reply0, reply1, reply2
+    // var reply = [];
+    // reaply0 = "I am reply0"
+    // reaply1 = "I am reply1"
+    // reaply2 = "I am reply2"
+    //
+    // reply[0] = "I am reply0"
+    // reply[1] = "I am reply1"
+    // reply[2] = "I am reply2"
+    //
+    // console.log(reply0);
+    // console.log(reply1);
+    // console.log(reply2);
+    //
+    // for(var i=0; i<3; i++){
+    //   console.log(reply[i]);
+    // }
+
+
+    var arr1 = [];
+    for (var i=0; i<10; i++) {
+      arr1[i] = i+1;
+    }
+    console.log(arr1);
+
+
+    var arr2 = [];
+    for (var i=0; i <= 10; i++) {
+      arr2[i] = i*2;
+    }
+    console.log(arr2);
+
+    var arr3 = [];
+    for (var i=0; i<7; i++){
+      arr3[i] = "abc"+(i+1);
+    }
+    console.log(arr3);
+
+    var arr4 = [];
+    for (var i =0; i < 9; i++){
+      arr4[i] = (i*3)+1;
+    }
+    console.log(arr4);
+
+    var arr5 = [];
+    for( var i=0; i<12; i++ ){
+      if(i%2 == 0){
+          arr5[i] = 0;
+      }else if (i%2 == 1) {
+          arr5[i] = 1;
+    }
+  }console.log(arr5);
+
+    var arr6 = [];
+    for(var i = 0; i<12; i++){
+      arr6[i] = i%4;
+  }
+
+  console.log(arr6);
+  var t = "";
+  var arr7 = [];
+  for( var i =0; i < 5; i++){
+    t = t+"text"
+    arr7[i] = t;
+  }
+  console.log(arr7)
+
+
+  var a = 1;
+  var arr8 = [];
+  for(var i =0; i<8; i++){
+    arr8[i] = a;
+    a= a*10;
+  }
+  console.log(arr8)
+
+  var arr9 = [];
+  arr9[0] = 0;
+  for(var i =2; i<10; i+=2){
+    arr9[i/2] = arr9[i/2-1] + 10;
+  }
+  console.log(arr9);
+
+
+  var arr10 =[];
+  for(var i =4; i < 16; i = i + 4) {
+    for(var j =0; j<4; j++) {
+      arr10[i -4 + j] = i - j;
+    }
+  }
+  console.log(arr10);
+
+
+
+  for (var i = 1; i<=200; i++){
+    console.log(i);
+    var str = i + "";
+    for(var j = 0; j < str.length; j++) {
+      // console.log(str[j]);
+      if(str[j] == 3 || str[j] == 6 || str[j] == 9){
+        console.log("짝")
+      }
+        // console.log(str[j]);
+
+    }
+
+  }
+
+
+
+
+  var arr11 = [1,2,3,4,5,6,"aa"];
+
+  for(var i=0; i<arr11.length; i++){
+    console.log(arr11[i]);
+  }
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
