@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <script>
+    var array = [];
+    var cars = [];
+    var car1 = {};//객체
+    var car2 = {};//객체
+    //속성
+    car1.color = "red";
+    car1.weight = "500kg";
+    car1.number = 1234;
+    car1.kind = "소나타";
+    car1.accidentHistory=[];
+    car1.accidentHistory[0] = '2011-03-01';
+    car1.accidentHistory[1] = '2013-03-01';
+    car2.name = "abc";
+    car2.abc = 123;
+
+    cars[0] = car1, cars[1] = car2;
+    cars[2] = {
+      name : "abc",
+      age : 123
+    }
+    console.log(cars);
+    // console.log(car1.weight, car1.kind);
+
+  </script>
+
+
+
+</body>
+
+</html>
