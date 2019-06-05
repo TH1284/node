@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="button" value="눌러라" id="Btn">
+    <span id="result"></span>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <div id="chart_div"></div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      $('#Btn').click(function(){
+        $.ajax({
+           url : `/requestTest`,
+           data: {
+
+           },
+           success:function(response){
+             console.log(response)
+             $('#result').html(response)
+               arr = [];
+               for(let i=0; i<10; i++) {
+                 arr.push([i, price]);
+               }
+              // 클릭을 한 후 값을 받아오는 것이기 때문에 함수 안에  쓴다.
+             setTimeout(function() {
+               setInterval(function() {
+
+                 $.ajax({
+               		url: `/requestTest2`,
+               		data: {
+                     price : response
+                   },
+               		success:function(res){
+
+                     }
+               		})
+
+                 $("#result").append(`${response}<br>`)
+
+               }, 1000)
+             }, 3000)
+           }
+
+         })
+
+      google.charts.load('current', {
+        packages: ['corechart', 'line']
+      });
+
+      google.charts.setOnLoadCallback(drawCurveTypes);
+    });
+      function drawCurveTypes() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'X');
+        data.addColumn('number', 'response');
+
+        data.addRows(arr);
+
+        var options = {
+          hAxis: {
+            title: 'Time'
+          },
+          vAxis: {
+            title: 'Popularity'
+          },
+          series: {
+            1: {
+              curveType: 'function'
+            }
+          }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+
+  </html>

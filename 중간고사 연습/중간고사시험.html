@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  이름 : <input type="text" name="" value="" id="a">
+  <br>
+  html : <input type="text" name="" value="" id="b">
+  <br>
+  javascript : <input type="text" name="" value="" id="c">
+  <br>
+  css : <input type="text" name="" value="" id="d">
+  <br>
+  nodejs : <input type="text" name="" value="" id="e">
+  <br>
+  mysql : <input type="text" name="" value="" id="f">
+  <br>
+  <input type="button" name="" value="성적입력" id="g">
+  <input type="button" name="" value="초기화" id="h">
+  <br>
+  <br>
+
+
+  <span id="span1"></span>
+  <br>
+  <br>
+  <span id="span2"></span>
+  <script>
+    var i = 0;
+    var sumb = 0;
+    var avgb = 0;
+    var sumc = 0;
+    var avgc = 0;
+    var sumd = 0;
+    var avgd = 0;
+    var sume = 0;
+    var avge = 0;
+    var sumf = 0;
+    var avgf = 0;
+    document.getElementById('g').addEventListener('click', function(){
+
+      var a = document.getElementById('a').value;
+      var b = Number(document.getElementById('b').value);
+      var c = Number(document.getElementById('c').value);
+      var d = Number(document.getElementById('d').value);
+      var e = Number(document.getElementById('e').value);
+      var f = Number(document.getElementById('f').value);
+
+
+      document.getElementById('span1').innerHTML +=`이름: ${a} / html : ${b} / javascript : ${c} / css : ${d} /
+       nodejs : ${e} / mysql : ${f} / ${a}평균 : ${(b+c+d+e+f)/5}<br>`
+      i++;
+      sumb += b;
+      avgb = sumb/i;
+      sumc += c;
+      avgc = sumc/i;
+      sumd += d;
+      avgd = sumd/i;
+      sume += e;
+      avge = sume/i;
+      sumf += f;
+      avgf = sumf/i;
+        document.getElementById('span2').innerHTML = `html평균 : ${avgb} / javascript평균 : ${avgc} / css평균 : ${avgd} /
+         nodejs평균 : ${avge} / mysql평균 : ${avgf}`
+
+
+
+
+
+    })
+    document.getElementById('h').addEventListener('click', function(){
+      document.getElementById('span1').innerHTML ="";
+    })
+
+  </script>
+
+</body>
+
+</html>

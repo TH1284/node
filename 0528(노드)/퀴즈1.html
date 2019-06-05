@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id="input">
+  <input type="button" value="배수증가" id="Btn1">
+  <input type="button" value="타이머시작" id="Btn2">
+  <input type="button" value="타이머종료" id="Btn3">
+  <span id="result1"></span>
+  <br>
+  <span id="result2"></span>
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript">
+    var num1 = 1, timer;
+    //var aa = $("#input").val();
+    $("#Btn1").click(function() {
+      var aa = $("#input").val(); // 클릭을 한 후 값을 받아오는 것이기 때문에 함수 안에  쓴다.
+      setTimeout(function() {
+        setInterval(function() {
+          var result = aa*num1
+          $("#result2").append(`${result}<br>`)
+          num1++
+        }, 1000)
+      }, 3000)
+    })
+    var num2 = 0;
+    $("#Btn2").click(function(){
+      //var num2 = 1;
+      setTimeout(function() {
+        timer = setInterval(function(){
+          $("#result1").html(num2)
+          num2++
+        }, 1000)
+      },3000)
+    })
+      $("#Btn3").click(function(){
+        setTimeout(function() {
+          clearInterval(timer)
+        }, 3000)
+      })
+
+    // $("#Btn3").click(function(){
+    //   setTimeout(function() {
+    //     clearInterval(timer)
+    //   }, 3000)
+    // })
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <input type="text" id="a">
+  <input type="text" id="b">
+  <input type="text" id="c">
+  <br>
+  <span id="result1"></span>
+  <span id="result2"></span>
+  <br>
+  <br>
+  <br>
+  <input type="button" id="btnRe" value="return값으로">
+  <input type="button" id="btnS" value="실행부에서">
+</body>
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <script>
+    function maxNumber(a,b,c){
+      var max = Math.max(a,b,c)
+      return max
+    }
+
+    function inputNumber(a,b,c) {
+      console.log(Math.max(a,b,c))
+      //$("#result2").html(Math.max(a,b,c))
+    }
+
+
+    $("#btnRe").click(function(){
+      var a = $("#a").val();
+      var b = $("#b").val()
+      var c = $("#c").val()
+      console.log(maxNumber(a,b,c))
+      //$("#result1").html(maxNumber(a,b,c))
+    });
+
+
+    $("#btnS").click(function(){
+      var a = $("#a").val();
+      var b = $("#b").val()
+      var c = $("#c").val()
+
+      console.log(inputNumber(a,b,c))
+    });
+
+
+  </script>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  항공코드 / 항공기명 / 좌석수
+  <br>
+  <span id="result"></span>
+  <br>
+  항공코드 : <input type="text" id="aircraftCode"><br>
+  항공기명 : <input type="text" id="aircraftName"><br>
+  좌석수 : <input type="text" id="seats">
+  <br>
+  <input type="button" value="입력" id="Btn1">
+  <input type="button" value="취소" id="Btn2">
+
+</body>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript">
+    $("#Btn1").click(function() {
+
+    var code = $("#aircraftCode").val();
+    var name = $("#aircraftName").val();
+    var seats = $("#seats").val();
+      $.ajax({
+      url : `/List1`,
+      data: {
+            code : code,
+            name : name,
+            seats : seats
+      },
+      success:function(response){
+        console.log(response);
+        location.href = "/test"
+      }
+    });
+  })
+    $.ajax({
+    url : `/dbSelectTest1`,
+    data: {
+
+    },
+    success:function(response){
+
+      $("#result").html("");
+      for(var i=0; i<response.length; i++){
+        var result=`${response[i].aircraftCode}/ ${response[i].aircraftName}/ ${response[i].seats}`
+        $("#result").append(`${result} <input type="button" value="삭제" onclick="mClick(${response[i].no})"><br>`)  //html인데 마지막 것만 나오므로 append를 이용해서 계속해서 추가해줌
+
+      }
+    }
+  })
+  function mClick(number){
+    $.ajax({
+    url : `/del2`,
+    type:'POST',
+    data: {
+      number : number
+    },
+    success:function(response){
+    location.href = "/test3"
+    }
+  })
+}
+$("#Btn2").click(function() {
+  location.href = "/test"
+})
+  </script>
+</html>

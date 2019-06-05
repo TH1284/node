@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    제목 : <input type="text"value="" id="a">
+    <br>
+    내용 : <input type="text"value="" id="b">
+    <br>
+    작성자 : <input type="text"value="" id="c">
+    <br>
+    <input type="button" value="입력" id="Btn">
+  </body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+    var tmp = location.href; //  수정하기url를 변수에 담어서 split를 한다.
+    // console.log(tmp); // string
+      // console.log(tmp.split("?")[1])
+      $("#Btn").click(function() {
+      var upda = tmp.split("?")[1]// (string)    no부분을 가져온다
+      var a1 = $("#a").val();
+      var b1 = $("#b").val();
+      var c1 = $("#c").val();
+      console.log(upda);
+        $.ajax({
+        url : `/newList5`,
+        type:'POST',
+        data: {
+              title : a1,
+              text : b1,
+              upda : upda,
+              writer : c1
+        },
+        success:function(response){
+          console.log(response);
+          location.href = "/sum"
+
+        }
+      });
+    });
+    var upda = tmp.split("?")[1] //번튼을 클릭 할떄 나오는 것이 아니기 때문에 함수 밖에 있어야된다.
+    $.ajax({
+    url : `/newup`,
+    data: {
+          upda : upda
+    },
+    success:function(response){
+      $("#a").val(response[0].title);
+      $("#b").val(response[0].text);
+      $("#c").val(response[0].writer);
+
+    }
+  });
+  </script>
+</html>

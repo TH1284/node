@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="button" value="test" id="testBtn">
+  <br>
+  <span id="result"></span>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+  $("#testBtn").click(function() {
+
+    $.ajax({
+      url : `/dbSelectTest`,
+      data: {
+
+      },
+      success:function(response){
+        console.log(response);
+        $("#result").html(response)
+      }
+    });
+
+  });
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <input type="button" value="test" id="testBtn">
+    <br>
+    <span id="result"></span>
+
+  </body>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      $("#testBtn").click(function() {
+
+        $.ajax({
+        url : `/newList`,
+        data: {
+
+        },
+        success:function(response){
+          console.log(response);
+
+          $("#result").html("");
+          for(var i=0; i<response.length; i++){
+            var result=`${response[i].title} : ${response[i].text}<br>`
+            $("#result").append(result)  //html인데 마지막 것만 나오므로 append를 이용해서 계속해서 추가해줌
+          }
+
+        }
+      });
+
+    });
+  </script>
+
+</html>

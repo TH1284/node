@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    편명/ 항공코드 / 출발지/ 목적지/ 출발시각/ 도착시간 <br>
+    <span id="result"></span>
+    <br>
+    <br>
+    편명 : <input type="text" id="flightName"><br>
+    항공코드 : <input type="text" id="aircraftCdoe"><br>
+    출발지 : <input type="text" id="departure"><br>
+    목적지 : <input type="text" id="arrival"><br>
+    출발시간 : <input type="text" id="departTime"><br>
+    도착시간 : <input type="text" id="aeeivalTime">
+    <br>
+    <input type="button" value="입력" id="Btn1">
+    <input type="button" value="취소" id="Btn2">
+  </body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      $("#Btn1").click(function() {
+
+      var name = $("#flightName").val();
+      var code = $("#aircraftCdoe").val();
+      var departure = $("#departure").val();
+      var arrival = $("#arrival").val();
+      var departTime = $("#departTime").val();
+      var aeeivalTime = $("#aeeivalTime").val();
+        $.ajax({
+        url : `/list2`,
+        data: {
+              name : name,
+              code : code,
+              departure : departure,
+              arrival : arrival,
+              departTime : departTime,
+              aeeivalTime : aeeivalTime
+        },
+        success:function(response){
+          console.log(response);
+          location.href = "/test"
+        }
+      });
+    })
+      $.ajax({
+      url : `/dbSelectTest2`,
+      data: {
+
+      },
+      success:function(response){
+
+        $("#result").html("");
+        for(var i=0; i<response.length; i++){
+          var result=`${response[i].flightName}/ ${response[i].aircraftCdoe}/ ${response[i].departure}/ ${response[i].arrival}/ ${response[i].departTime}/ ${response[i].aeeivalTime}`
+          $("#result").append(`${result} <input type="button" value="삭제" onclick="mClick(${response[i].no})"><br>`)  //html인데 마지막 것만 나오므로 append를 이용해서 계속해서 추가해줌
+
+        }
+      }
+    })
+    function mClick(number){
+      $.ajax({
+      url : `/del1`,
+      type:'POST',
+      data: {
+        number : number
+      },
+      success:function(response){
+      location.href = "/test2"
+      }
+    })
+  }
+  $("#Btn2").click(function() {
+    location.href = "/test"
+  })
+  </script>
+</html>

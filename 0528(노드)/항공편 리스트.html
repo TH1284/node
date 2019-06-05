@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    편명/ 항공기명/ 좌석수/ 출발지/ 목적지/ 출발시각/ 도착시간 <br>
+    <span id="result"></span>
+    <br>
+    <br>
+    <input type="button" value="항공편입력" id="air1">
+    <input type="button" value="항공기입력" id="air2">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+    $.ajax({
+    url : `/list3`,
+    data: {
+
+    },
+    success:function(response){
+
+      $("#result").html("");
+      for(var i=0; i<response.length; i++){
+        var result=`${response[i].flightName}/ ${response[i].aircraftName}/ ${response[i].seats}/ ${response[i].departure}/ ${response[i].arrival}/ ${response[i].departTime}/ ${response[i].aeeivalTime}`
+        $("#result").append(`${result} <br>`)  //html인데 마지막 것만 나오므로 append를 이용해서 계속해서 추가해줌
+
+      }
+    }
+  })
+
+
+    $("#air1").click(function() {
+      location.href = "/test2"
+    })
+
+    $("#air2").click(function() {
+      location.href = "/test3"
+    })
+
+    </script>
+  </body>
+</html>

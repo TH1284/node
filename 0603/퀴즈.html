@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="button"value="그리기" id="drawGraphBtn">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <div id="chart_div"></div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      $('#drawGraphBtn').click(function(){
+        arr = [];
+        for(let i=0; i<10; i++) {
+          arr.push([i, Math.floor(Math.random()*11), Math.floor(Math.random()*11), Math.floor(Math.random()*11)]);
+        }
+      google.charts.load('current', {
+        packages: ['corechart', 'line']
+      });
+
+      google.charts.setOnLoadCallback(drawCurveTypes);
+    });
+      function drawCurveTypes() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'X');
+        data.addColumn('number', 'Dogs');
+        data.addColumn('number', 'Cats');
+        data.addColumn('number', 'Cow');
+
+        data.addRows(arr);
+        // data.addRows([
+        //   [0, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [1, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [2, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [3, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [4, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [5, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [6, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [7, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [8, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [9, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        //   [10, Math.floor(Math.random()*10), Math.floor(Math.random()*10)],
+        // ]);
+
+        // for (var i =0; i<=10; i++) {
+        //   data.addRows([
+        //   [i, Math.floor(Math.random()*11), Math.floor(Math.random()*11), Math.floor(Math.random()*11)]
+        // ]);
+        // }
+
+        var options = {
+          hAxis: {
+            title: 'Time'
+          },
+          vAxis: {
+            title: 'Popularity'
+          },
+          series: {
+            1: {
+              curveType: 'function'
+            }
+          }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </body>
+
+  </html>

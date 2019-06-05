@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="button"value="뉴스불러오기" id="Btn1">
+    <br>
+    <input type="button" value="글쓰기" id="Btn2">
+    <input type="button" value="전체삭제" id="Btn3">
+    <br>
+    <span id = "result"></span>
+
+  </body>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      // $("#Btn1").click(function() {
+//위에 버튼을 주석한 이유는 화면에서 클릭하지 않고 바로 값들이 나오기 하기위해서 주석처리함
+        $.ajax({
+        url : `/newList`,
+        data: {
+
+        },
+        success:function(response){
+
+          $("#result").html("");
+          for(var i=0; i<response.length; i++){
+            var result=`제목: ${response[i].title}  내용: ${response[i].text}  작성자:${response[i].writer}`
+            $("#result").append(`${result} <input type="button" value="삭제" onclick="mClick(${response[i].no})"><input type="button" value="수정" onclick="upClick(${response[i].no})"><br>`)  //html인데 마지막 것만 나오므로 append를 이용해서 계속해서 추가해줌
+
+          }
+        }
+      })
+
+      function upClick(number){
+        var a = number
+        location.href = `/up?${a}`
+      }
+
+
+      function mClick(number){
+        $.ajax({
+        url : `/newList4`,
+        type:'POST',
+        data: {
+          number : number
+        },
+        success:function(response){
+        location.href = "/sum"
+        }
+      })
+    }
+      $("#Btn2").click(function() {
+        location.href = "/quiz"
+      })
+
+      $("#Btn3").click(function() {
+        $.ajax({
+        url : `/newList3`,
+        type:'POST',
+        data: {
+        },
+        success:function(response){
+          location.href = "/data"
+
+        }
+      });
+
+
+
+
+    });
+  </script>
+
+</html>

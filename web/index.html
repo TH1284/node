@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      table {
+      	width: 500px;
+      }
+      th {
+      	background: #eee;
+      	padding: 5px;
+      }
+      td {
+      	text-align: center;
+      	padding: 5px;
+      }
+      th, td {
+      	border: 1px solid #eee;
+      }
+  </style>
+  </head>
+  <body>
+    <center>
+    <font size="S" color="blue">
+      blockchain
+    </font>
+  </center><br>
+  <input type="text" name="search">
+  <input type="button" id="searchBtn" value="조회"><br><br><br><br> blockList
+  <table id="blockList">
+    <tr>
+      <th>
+        NO
+      </th>
+      <th>
+        PREVIOUSTHASH
+      </th>
+      <th>
+        TIMESTAMP
+      </th>
+      <th>
+        DATA
+      </th>
+      <th>
+        CURRENTHASH
+      </th>
+      <th>
+        PROOF
+      </th>
+      <th>
+        FEE
+      </th>
+      <th>
+        SIGNATURE
+      </th>
+    </tr>
+  </table><br><br> txList
+  <table id="txList">
+    <tr>
+      <th>
+        COMMITYN
+      </th>
+      <th>
+        SENDER
+      </th>
+      <th>
+        AMOUNT
+      </th>
+      <th>
+        RECEIVER
+      </th>
+      <th>
+        UUID
+      </th>
+      <th>
+        FEE
+      </th>
+      <th>
+        MESSAGE
+      </th>
+      <th>
+        TXTIME
+      </th>
+    </tr>
+  </table><br><br> nodeList
+  <table id="nodeList">
+    <tr>
+      <th>
+        ip
+      </th>
+      <th>
+        port
+      </th>
+    </tr>
+  </table><br><br>
+  </body>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript">
+    var letter;
+    $.ajax({
+      url: `/blockList`,
+      data: {},
+      success: function(res) {
+        for (var i = 0; i < res.length; i++) {
+          var NO = res[i].NO
+          var PREVIOUSTHASH = res[i].PREVIOUSTHASH
+          var TIMESTAMP = res[i].TIMESTAMP
+          var DATA = res[i].DATA
+          var CURRENTHASH = res[i].CURRENTHASH
+          var PROOF = res[i].PROOF
+          var FEE = res[i].FEE
+          var SIGNATURE = res[i].SIGNATURE
+          $("#blockList").append(`<tr><td>${NO}</td><td>${PREVIOUSTHASH}</td><td>${TIMESTAMP}</td><td>${DATA}</td><td>${CURRENTHASH}</td><td>${PROOF}</td><td>${FEE}</td><td>${SIGNATURE}</td></tr>`);
+        }
+      }
+    });
+
+    $.ajax({
+      url: `/txList`,
+      data: {},
+      success: function(res) {
+        for (var i = 0; i < res.length; i++) {
+          var COMMITYN = res[i].COMMITYN
+          var SENDER = res[i].SENDER
+          var AMOUNT = res[i].AMOUNT
+          var RECEIVER = res[i].RECEIVER
+          var UUID = res[i].UUID
+          var FEE = res[i].FEE
+          var MESSAGE = res[i].MESSAGE
+          var TXTIME = res[i].TXTIME
+          $("#txList").append(`<tr><td>${COMMITYN}</td><td>${SENDER}</td><td>${AMOUNT}</td><td>${RECEIVER}</td><td>${UUID}</td><td>${FEE}</td><td>${MESSAGE}</td><td>${TXTIME}</td></tr>`);
+        }
+      }
+    });
+
+    $.ajax({
+      url: `/nodeList`,
+      data: {},
+      success: function(res) {
+
+        for (var i = 0; i < res.length; i++) {
+          var ip = res[i].ip
+          var port = res[i].port
+          $("#nodeList").append(`<tr><td>${ip}</td><td>${port}</td></tr>`);
+        }
+      }
+    });
+    $("#searchBtn").click(function(){
+      if (letter == "blockList") {
+        location.href = "/blockList";
+      }
+      else if (letter == txList) {
+        location.href = "/txList";
+      }
+  	});
+
+  </script>
+</html>

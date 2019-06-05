@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <select name="" id="selctBox">
+    <option value="0">개</option>
+    <option value="1">닭</option>
+    <option value="2">돼지</option>
+    <option value="3">소</option>
+  </select>
+
+  <input type="button" id="buyBtn" value="버튼">
+  <span id="result"></span>
+
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script>
+  $("#buyBtn").click(function() {
+    if($("selctBox")).val()==0){
+      showMsg("개")
+    }else if($("selctBox")).val()==1){
+      showMsg("닭")
+    }else if($("selctBox")).val()==2){
+      showMsg("돼지")
+    }else if($("selctBox")).val()==3){
+      showMsg("소")
+    }
+  });
+
+  function showMsg(aninaName){
+    console.log(`${aninaName}를 선택하셨습니다`)
+    return 0;
+  }
+</script>
+
+</html>

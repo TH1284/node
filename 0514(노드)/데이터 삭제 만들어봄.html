@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- 제목 : <input type="text"value="" id="a">
+    <br>
+    내용 : <input type="text"value="" id="b">
+    <br> -->
+    <input type="button" value="전체 삭제ㄱㄱ" id="Btn">
+  </body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      $("#Btn").click(function() {
+
+      // var a1 = $("#a").val();
+      // var b1 = $("#b").val();
+
+        $.ajax({
+        url : `/newList3`,
+        type:'POST',
+        data: {
+              // title : a1
+              // text : b1
+        },
+        success:function(response){
+          console.log(response);
+          location.href = "/sum"
+
+        }
+      });
+
+    });
+  </script>
+</html>
