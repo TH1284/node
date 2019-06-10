@@ -16,39 +16,39 @@
   <script type="text/javascript">
 
 
-  //   $('#ajaxBtn').click(function() {
-  //     $.ajax({
-  //     url : `/requestTest`,
-  //     data: {
-  //
-  //     },
-  //     success:function(response){
-  //       console.log(response)
-  //       $('#result').html(response)
-  //
-  //        // 클릭을 한 후 값을 받아오는 것이기 때문에 함수 안에  쓴다.
-  //       setTimeout(function() {
-  //         setInterval(function() {
-  //
-  //           $.ajax({
-  //         		url: `/requestTest2`,
-  //         		data: {
-  //               price : response
-  //             },
-  //         		success:function(res){
-  //
-  //               }
-  //         		})
-  //
-  //           $("#result").append(`${response}<br>`)
-  //
-  //         }, 1000)
-  //       }, 3000)
-  //     }
-  //
-  //   })
-  //
-  // });
+    $('#ajaxBtn').click(function() {
+      $.ajax({
+      url : `/requestTest`,
+      data: {
+
+      },
+      success:function(response){
+        // console.log(response)
+        // $('#result').html(response)
+
+         // 클릭을 한 후 값을 받아오는 것이기 때문에 함수 안에  쓴다.
+        setTimeout(function() {
+          setInterval(function() {
+
+            $.ajax({
+          		url: `/requestTest2`,
+          		data: {
+                price : response
+              },
+          		success:function(res){
+
+                }
+          		})
+
+            $("#result").append(`${response}<br>`)
+
+          }, 1000)
+        }, 3000)
+      }
+
+    })
+
+  });
 
   </script>
 </body>

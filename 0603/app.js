@@ -40,11 +40,11 @@ app.get('/requestTest', function(req, res) {
 });
 
 app.get('/ajax', function(req, res) {
-  res.sendfile("ajax.html")
+  res.sendfile("ajax2.html")
 });
 
 app.get('/requestTest2', function(req, res) {
-  var  price = req.query.price;
+  var price = req.query.price;
 
   var selectQuery = `insert into naver (price) values("${price}")`
   console.log(selectQuery)
@@ -59,5 +59,14 @@ app.get('/chart', function(req, res) {
 });
 
 app.get('/chart2', function(req, res) {
-  res.sendfile("기말고사 연습.html")
+  res.sendfile("퀴즈.html")
 });
+
+app.get('/select', function(req, res) {
+  var selectQuery = 'select * from naver';
+
+  connection.query(selectQuery,
+    function(err, rows, fields) {
+      res.send(rows);
+    })
+})

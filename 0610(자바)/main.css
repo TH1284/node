@@ -1,0 +1,19 @@
+div{
+  border: 1px solid #333;
+}
+
+#head {
+  background: #ff0000;
+  padding: 5px 10px;
+  color: #fff;
+}
+.div1{
+  height: 20px;
+  border-radius: 20px;
+}
+.test div div:nth-child(2n+1){
+  background: #00ffff;
+}
+.div2{
+  font-
+}
