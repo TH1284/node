@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="button" value="삼성전자주식" id="sBtn">
+  <input type="button" value="멈춰" id="stopBtn">
+  <input type="button" value="보여주기" id="selectBtn">
+  <input type="button" value="그래프" id="chartBtn">
+  <span id="result1"></span>
+  <span id="result2"></span>
+  <span id="result3"></span>
+  <span id="result4"></span>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+  var timer;
+  var arr
+  var minvalue
+  var maxvalue
+  $("#sBtn").click(function(){
+    timer = setInterval(function(){
+      $.ajax({
+        url: `/requestTest`,
+        data: {},
+        success: function(res) {
+          var price = res
+          $("#result1").append(`${price} <br>`)
+
+          $.ajax({
+            url: `/requestTest2`,
+            data: {
+              price: price
+            },
+            success: function(response) {
+
+            }
+          })
+        }
+      })
+    },2000)
+  })
+
+  $("#stopBtn").click(function(){
+    clearInterval(timer)
+    $("#result1").html("멈췄음")
+  })
+
+  $("#selectBtn").click(function(){
+    $.ajax({
+      url: `/select`,
+      data:{},
+      success: function(response){
+        $("#result2").html("")
+        for (var i =0; i < response.length; i++) {
+          var result = `${response[i].time} / ${response[i].price} `
+          $("#result2").append(`${result}<br>`)
+        }
+
+      }
+    })
+  })
+
+  $("#chartBtn").click(function(){
+    timer = setInterval(function() {
+      var price = []
+      var time =[]
+      arr =[]
+
+      $.ajax({
+        url: `select`,
+        data: {},
+        success: function(response) {
+          for (var i =0; i < response.length; i++) {
+            price[i] = response[i].price
+            time[i] = response[i].time
+            minvalue = Math.min.apply(null, price)
+            maxvalue = Math.min.apply(null, price)
+            time[i] = time[i].split('T')[1]
+            time[i] = time[i].split('.')[0]
+            arr.push([time[i], price[i]])
+
+            $("#result4").html(`최소 : ${minvalue}<br>최대 : ${maxvalue}`)
+          }
+          google.charts.load('current', {
+            packages: ['corechart', 'line']
+          });
+          google.charts.setOnLoadCallback(drawCurveTypes);
+        }
+      })
+    },2000)
+  })
+
+
+  function drawCurveTypes() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'X');
+    data.addColumn('number', '주식');
+
+
+    data.addRows(arr);
+
+    var options = {
+      width: 1000,
+      height: 700,
+      hAxis: {
+        title: 'Time'
+      },
+      vAxis: {
+        title: 'Popularity'
+      },
+      series: {
+        1: {
+          curveType: 'function'
+        }
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+</html>
