@@ -15,6 +15,7 @@
   <input type="button" value="그래프보여주까?" id="chartBtn">
   <span id="priceView"></span><br><br>
   <span id="selectView"></span><br><br>
+  <span id="MinMax"></span>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <div id="chart_div"></div>
 
@@ -79,6 +80,8 @@
 
   });
 
+
+
   $("#chartBtn").click(function() {
   timer = setInterval(function() {
     var price =[]
@@ -104,6 +107,8 @@
           // time[i] = Number(time[i].replace(':',''))
           console.log(time[i])
           arr.push([time[i],price[i]])
+
+          $("#MinMax").html(`최소값 : ${minvalue} <br>최대값 : ${maxvalue}`);
         }
         google.charts.load('current', {
           packages: ['corechart', 'line']
